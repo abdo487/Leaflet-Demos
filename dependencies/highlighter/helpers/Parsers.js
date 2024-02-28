@@ -32,17 +32,18 @@ function javascript(arr) {
         index--;
       }
       index = i_now;
-    } else if (symbols.includes(item)) {
-      newArr[index] = `<span class="symbol">${item}</span>`;
     } else if (arr[index] == "/" && arr[index + 1] == "/") {
-      newArr[index] = `<span class="comment">`;
+      // get the full line and make it a comment
+      let i_now = index;
       while (arr[index] != "<br>") {
         if (arr[index] == undefined) break;
-        newArr[index] += arr[index];
+        newArr[index] = `<span class="comment">${arr[index]}</span>`;
         index++;
       }
-      newArr[index] += "</span>";
-    }else if (
+      return;
+    } else if (symbols.includes(item)) {
+      newArr[index] = `<span class="symbol">${item}</span>`;
+    } else if (
       arr[index - 3] == "." &&
       arr[index - 1] == "." &&
       arr[index + 1] == "."

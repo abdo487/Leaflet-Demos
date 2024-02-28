@@ -20,7 +20,7 @@ const themes = {
     "--function": "#ff5858",
     "--value": "#FFFD7C",
     "--property": "#AAAAAA",
-    "--comment": "#5c5c5c",
+    "--comment": "#756f6f",
     "--number": "#ff9d00",
   },
   light: {

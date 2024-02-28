@@ -156,6 +156,13 @@ function html(arr) {
         i--;
       }
       i = i_now;
+    } else if (arr[i] == ".") {
+      // get the full line and make it a comment
+      while (arr[i] != "\n") {
+        if (arr[i] == undefined) break;
+        newArr[i] = `<span class="comment">${arr[i]}</span>`;
+        i++;
+      }
     } else if (symbols.includes(arr[i])) {
       newArr[i] = `<span class="symbol">${arr[i]}</span>`;
     } else {

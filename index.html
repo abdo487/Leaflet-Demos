@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
-
+    
   </head>
   <body>
     <div
@@ -88,7 +88,48 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
           </code>
         </div>
-
+        <div>
+          <h2>Ajouter le plugin de géolocalisation à la carte</h2>
+          <div id="map2" class="map"></div>
+          <p class="paragraph">
+            Pour ajouter le plugin de géolocalisation à la carte, vous pouvez
+            utiliser le code suivant:
+          </p>
+          <code id="exemple3" data-lang="javascript">
+L.control.locate({
+  position: 'topright',
+  drawCircle: true,
+  follow: true,
+  setView: 'always'
+}).addTo(map);
+          </code>
+        </div>
+        <div>
+          <h2>Ajouter le plugin de routage à la carte</h2>
+          <div id="map3" class="map"></div>
+          <p class="paragraph">
+            Pour ajouter le plugin de routage à la carte, vous pouvez utiliser
+            le code suivant:
+          </p>
+          <code id="exemple4" data-lang="javascript">
+// Pour avoire la route entre deux points
+// points de départ
+var startLat = 34.01325;
+var startLng = -6.83255;
+// points d'arrivée
+var endLat = 34.01325;
+var endLng = -6.83255;
+// Ajouter la route entre les deux points
+L.Routing.control({
+  waypoints: [
+      L.latLng(startLat, startLng),
+      L.latLng(endLat, endLng)
+  ],
+  routeWhileDragging: true,
+  show: false,
+  geocoder: L.Control.Geocoder.nominatim()
+}).addTo(map);
+          </code>
         <!-- button to the next page -->
         <div>
           <a

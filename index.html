@@ -9,50 +9,109 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.css"/>
     <link rel="stylesheet" href="./styles/main.css" />
-    <style>
-      .map {
-        height: 400px;
-        width: 100%;
-        max-width: 720px;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="./dependencies/Highlighter/Styles/styles.css"
+    />
 
     <!-- script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
+      src="./dependencies/Highlighter/Highlighter-v2.0.0.min.js"
+      defer
     ></script>
   </head>
   <body>
     <div
-      class="w-full flex flex-col py-4 px-4 md:px-16 lg:px-24 justify-center"
+      class="w-full flex flex-col py-4 px-4 pb-10 md:px-16 lg:px-24 justify-center"
     >
-      <div class="w-full max-w-[720px]">
+      <div class="w-full max-w-[720px] flex flex-col gap-2 justify-center mx-auto">
         <div>
-            <h2>Overview	of	the	Leaflet	Geolocation	and		Leaflet	Routing	Machine	plugins</h2>
-            <div id="map1" class="map"></div>
+          <h1 class="text-center">
+            Overview of the Leaflet Geolocation and Leaflet Routing Machine
+            plugins
+          </h1>
+          <p class="paragraph">
+            Leaflet Geolocation Le plugin Leaflet Geolocation vous permet
+            d'ajouter des fonctionnalités de géolocalisation à votre carte,
+            permettant aux utilisateurs de trouver leur position actuelle.
+          </p>
+          <p class="paragraph">
+            Leaflet Routing Machine Le plugin Leaflet Routing Machine vous
+            permet d'ajouter des fonctionnalités de routage à votre carte,
+            permettant aux utilisateurs de trouver des itinéraires entre deux
+            points.
+          </p>
+          <div id="map1" class="map"></div>
+          <h2 class="text-xl mt-4 mb-4 font-bold">
+            Exemples de code: Leaflet Geolocation MAP
+          </h2>
+          <!-- description of what thing to add firt to the project en francais -->
+          <p class="paragraph">
+            Pour ajouter la carte à votre projet, vous devez d'abord ajouter les
+            liens vers les bibliothèques Leaflet, Geolocation et Routing Machine
+            à votre fichier HTML.
+          </p>
+          <code id="exemple1" data-lang="html">
+... Liens vers la bibliothèque Leaflet
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+... Liens vers Geolocation plugin
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.css"/>
+<script src="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.js"></script>
+
+... Liens vers Routing Machine plugin
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+... Dans le body du votre projet ajouter la div qui va contenir la carte
+<div id="map1" class="map"></div>
+          </code>
+          <p class="mt-4 paragraph">
+            Ensuite, vous pouvez ajouter la carte à votre projet en utilisant le
+            code suivant:
+          </p>
+          <code id="exemple2" data-lang="javascript">
+            // Initializing the map with the coordinates of any place we want
+var map = L.map("map1").setView([34.01325, -6.83255], 13);
+
+// Adding the OpenStreetMap tiles to the map
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+
+          </code>
+        </div>
+
+        <!-- button to the next page -->
+        <div>
+          <a
+            href="./pages/page2.html"
+            class="mt-8 bg-blue-500 hover:bg-blue-700 
+              text-white font-bold py-2 px-4 rounded 
+              flex items-center gap-2 w-fit mx-auto"
+            >
+            Next page <span class="text-2xl">→</span> 
+          </a>
         </div>
       </div>
     </div>
 
-
-    <script>
-      var map = L.map("map1").setView([51.505, -0.09], 13);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(map);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution:
-          '| &copy; <a href="http://www.openstreetmap.org/copyright">waxa</a>',
-      }).addTo(map);
-    </script>
+    <script src="./scripts/page1/App.js"></script>
+    <script type="module" src="./scripts/page1/highlight_code.js"></script>
   </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaflet Demos</title>
+
+    <!-- styles -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="../dependencies/Highlighter/Styles/styles.css"
+    />
+
+    <!-- script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script
+      src="../dependencies/Highlighter/Highlighter-v2.0.0.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div
+      class="w-full flex flex-col py-4 px-4 md:px-16 lg:px-24 justify-center"
+    >
+      <div class="w-full max-w-[720px] flex flex-col justify-center mx-auto">
+        <div>
+          <h2>
+            Overview of the Leaflet Geolocation and Leaflet Routing Machine
+            plugins
+          </h2>
+        </div>
+
+        <!-- button to the next page -->
+        <div class="max-h-fit flex justify-between">
+            <a
+            href="../index.html"
+            class="mt-8 bg-blue-500 hover:bg-blue-700 
+                text-white font-bold py-2 px-4 rounded 
+                flex items-center gap-2 w-fit"
+            >
+            <span class="text-2xl font-bold flex justify-center items-center"> ← </span> Previous page 
+            <a
+            href="./pages/page3.html"
+            class="mt-8 bg-blue-500 hover:bg-blue-700 
+                text-white font-bold py-2 px-4 rounded 
+                flex items-center gap-2 w-fit "
+            >
+            Next page <span class="text-2xl font-bold flex justify-center items-center">→</span> 
+            </a>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="../scripts/page2/App.js"></script>
+    <script type="module" src="../scripts/page2/highlight_code.js"></script>
+  </body>
+</html>

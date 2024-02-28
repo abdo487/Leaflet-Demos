@@ -7,3 +7,10 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
+
+L.control.locate({
+  position: 'topright',
+  drawCircle: true,
+  follow: true,
+  setView: 'always'
+}).addTo(map);

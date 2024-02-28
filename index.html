@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaflet Demos</title>
 
-    <!-- styles -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.css"/>
     <link rel="stylesheet" href="./styles/main.css" />
-    <link
-      rel="stylesheet"
-      href="./dependencies/highlighter/Styles/styles.css"
-    />
+    <link rel="stylesheet" href="./dependencies/highlighter/Styles/styles.css"/>
 
-    <!-- script -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- ... Liens vers Geolocation plugin -->
+    <link href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js"></script>
+
+    <!-- ... Liens vers Routing Machine plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
 
   </head>
   <body>
@@ -54,7 +49,7 @@
           <!-- description of what thing to add firt to the project en francais -->
           <p class="paragraph">
             Pour ajouter la carte à votre projet, vous devez d'abord ajouter les
-            liens vers les bibliothèques Leaflet, Geolocation et Routing Machine
+            liens vers les bibliothèques Leaflet et Routing Machine
             à votre fichier HTML.
           </p>
           <code id="exemple1" data-lang="html">
@@ -66,8 +61,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 ... Liens vers Geolocation plugin
-<link rel="stylesheet" href="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.css"/>
-<script src="https://unpkg.com/leaflet-control-locate/dist/L.Control.Locate.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js"></script>
 
 ... Liens vers Routing Machine plugin
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>

@@ -137,6 +137,7 @@ const obj = {
       lng: null,
   }
 }
+
 let map6 = generate_map("map6", [34.02745, -6.83255]);
 L.control.locate({
   position: 'topright',

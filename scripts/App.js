@@ -35,7 +35,7 @@ map3.on('locationfound', function(e) {
 
   // Personnaliser l'icone du marker
   let icon = L.icon({
-      iconUrl: '../assets/marker.png', // l'url de l'icone
+      iconUrl: '/assets/marker.png', // l'url de l'icone
       iconSize: [50, 50], // la taille de l'icone
   });
   // Ajouter le marker à la carte
@@ -155,7 +155,7 @@ map6.on('locationfound', function(e) {
   map6.setView([e.latitude, e.longitude], 15);
 
   let icon = L.icon({
-      iconUrl: '../assets/marker.png',
+      iconUrl: '/assets/marker.png',
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [0, -50]
@@ -201,7 +201,7 @@ const handleMapClick = (e) => {
   }
   // add the new marker
   let icon = L.icon({
-      iconUrl: '../assets/destination-marker.png',
+      iconUrl: '/assets/destination-marker.png',
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [0, -50]

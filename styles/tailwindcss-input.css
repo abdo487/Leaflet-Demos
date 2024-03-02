@@ -3,19 +3,20 @@
 @tailwind utilities;
 
 h1 {
-  @apply text-3xl font-bold mb-5;
+  @apply text-3xl font-bold mb-3;
 }
 h2 {
-  @apply text-2xl font-bold mb-5;
+  @apply text-2xl font-bold mb-3;
 }
 h3 {
-  @apply text-xl font-bold mb-5;
+  @apply text-xl font-bold mb-3;
 }
 .paragraph {
-  @apply mb-4 text-gray-500 text-sm;
+  @apply mb-2 text-gray-500 text-sm;
 }
 .map {
   height: 400px;
   width: 100%;
   max-width: 720px;
+  margin: 10px 0px;
 }

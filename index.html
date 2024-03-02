@@ -31,11 +31,13 @@
             Overview of the Leaflet Geolocation and Leaflet Routing Machine
             plugins
           </h1>
+          <h3>Leaflet Geolocation Plugin:</h3>
           <p class="paragraph">
             Leaflet Geolocation Le plugin Leaflet Geolocation vous permet
             d'ajouter des fonctionnalités de géolocalisation à votre carte,
             permettant aux utilisateurs de trouver leur position actuelle.
           </p>
+          <h3>Leaflet Routing Machine Plugin:</h3>
           <p class="paragraph">
             Leaflet Routing Machine Le plugin Leaflet Routing Machine vous
             permet d'ajouter des fonctionnalités de routage à votre carte,
@@ -43,9 +45,6 @@
             points.
           </p>
           <div id="map1" class="map"></div>
-          <h2 class="text-xl mt-4 mb-4 font-bold">
-            Exemples de code: Leaflet Geolocation MAP
-          </h2>
           <!-- description of what thing to add firt to the project en francais -->
           <p class="paragraph">
             Pour ajouter la carte à votre projet, vous devez d'abord ajouter les
@@ -88,29 +87,26 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
           </code>
         </div>
-        <div>
+        <div class="mt-4">
           <h2>Ajouter le plugin de géolocalisation à la carte</h2>
-          <div id="map2" class="map"></div>
           <p class="paragraph">
             Pour ajouter le plugin de géolocalisation à la carte, vous pouvez
             utiliser le code suivant:
           </p>
+          <div id="map2" class="map"></div>
           <code id="exemple3" data-lang="javascript">
-L.control.locate({
-  position: 'topright',
-  drawCircle: true,
-  follow: true,
-  setView: 'always'
-}).addTo(map);
+L.control.locate().addTo(map);
           </code>
         </div>
-        <div>
+
+
+        <div class="mt-4">
           <h2>Ajouter le plugin de routage à la carte</h2>
-          <div id="map3" class="map"></div>
           <p class="paragraph">
             Pour ajouter le plugin de routage à la carte, vous pouvez utiliser
             le code suivant:
           </p>
+          <div id="map3" class="map"></div>
           <code id="exemple4" data-lang="javascript">
 // Pour avoire la route entre deux points
 // points de départ
@@ -127,7 +123,6 @@ L.Routing.control({
   ],
   routeWhileDragging: true,
   show: false,
-  geocoder: L.Control.Geocoder.nominatim()
 }).addTo(map);
           </code>
         <!-- button to the next page -->

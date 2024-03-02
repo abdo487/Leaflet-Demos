@@ -2439,10 +2439,10 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .paragraph {
@@ -2451,6 +2451,19 @@ h3 {
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.part_of_code {
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 33 46 / var(--tw-bg-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .map {
@@ -2550,3 +2563,4 @@ h3 {
     }
   }
 }
+

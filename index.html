@@ -88,25 +88,84 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           </code>
         </div>
         <div class="mt-4">
-          <h2>Ajouter le plugin de géolocalisation à la carte</h2>
+          <h2>1. Ajouter le plugin de géolocalisation à la carte</h2>
           <p class="paragraph">
             Pour ajouter le plugin de géolocalisation à la carte, vous pouvez
             utiliser le code suivant:
           </p>
           <div id="map2" class="map"></div>
           <code id="exemple3" data-lang="javascript">
-L.control.locate().addTo(map);
+L.control.locate().addTo(map); // Ajouter le plugin de géolocalisation à la carte
+          </code>
+          <h3>a. Initialisation du Contrôle de Géolocalisation :</h3>
+          <p class="paragraph">
+            <span class="part_of_code">L.control.locate()</span> crée une instance de contrôle de géolocalisation, qui ajoute un bouton à la carte pour permettre à l'utilisateur de déclencher la fonction de géolocalisation de leur appareil.
+          </p>
+          <h3>b. Configuration du Contrôle de Géolocalisation :</h3>
+          <p class="paragraph">
+            Le contrôle de géolocalisation est configuré pour détecter automatiquement l'emplacement de l'utilisateur lorsque le bouton est cliqué.
+            <br>
+            Le contrôle peut inclure des options pour contrôler le comportement, telles que la définition de la position initiale, le suivi en temps réel de la localisation de l'utilisateur et l'ajustement de la précision de la géolocalisation.
+          </p>
+          <!-- <p class="paragraph">
+            Maintenant, pour une personnalisation plus poussée, examinons certains des paramètres du plugin de contrôle de localisation.
+          </p> -->
+          <h3>c. Personnalisation du Contrôle de Géolocalisation :</h3>
+          <p class="paragraph">
+            Le plugin de contrôle de localisation peut être personnalisé pour inclure des options telles que le suivi en temps réel de la localisation de l'utilisateur, l'ajustement de la précision de la géolocalisation et la définition de la position initiale.
+          </p>
+          <div id="map3" class="map"></div>
+          <code id="exemple4" data-lang="javascript">
+// Initialiser la carte avec des coordonnées spécifiques
+let map = L.map(id).setView(cords ? cords : [34.01325, -6.83255], 13);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+
+// Personnaliser le plugin de Geolocation
+L.control.locate({
+  position: 'topright', // la position de l'icone de geolocalisation
+  drawCircle: false, // pour ne pas dessiner le cercle de la précision
+  drawMarker: false, // pour ne pas dessiner le marker de la position
+  showPopup: false, // pour ne pas afficher le popup
+  setView: true, // pour centrer la carte sur la position
+  keepCurrentZoomLevel: true, // pour garder le niveau de zoom actuel
+  locateOptions: { // les options de la geolocalisation
+      maxZoom: 15, // le niveau de zoom maximal
+      enableHighAccuracy: true, // pour activer la haute précision
+      timeout: 1000, // le temps maximal pour obtenir la position
+  }
+}).addTo(map);
+
+// pour afficher le marker de la position
+map.on('locationfound', function(e) {
+  map.setView([e.latitude, e.longitude], 15); // centrer la carte sur la position
+
+  // Personnaliser l'icone du marker
+  let icon = L.icon({
+      iconUrl: '../assets/marker.png', // l'url de l'icone
+      iconSize: [50, 50], // la taille de l'icone
+  });
+  // Ajouter le marker à la carte
+  L.marker([e.latitude, e.longitude], {icon}).addTo(map);
+});
+// pour afficher un message d'erreur si l'utilisateur refuse l'accès à sa position
+map.on('locationerror', function(e) {
+  console.error("Location access denied.");
+});
           </code>
         </div>
 
 
         <div class="mt-4">
-          <h2>Ajouter le plugin de routage à la carte</h2>
+          <h2>2. Ajouter le plugin de routage à la carte</h2>
           <p class="paragraph">
             Pour ajouter le plugin de routage à la carte, vous pouvez utiliser
             le code suivant:
           </p>
-          <div id="map3" class="map"></div>
+          <div id="map4" class="map"></div>
           <code id="exemple4" data-lang="javascript">
 // Pour avoire la route entre deux points
 // points de départ
@@ -125,21 +184,200 @@ L.Routing.control({
   show: false,
 }).addTo(map);
           </code>
-        <!-- button to the next page -->
-        <div>
-          <a
-            href="./pages/page2.html"
-            class="mt-8 bg-blue-500 hover:bg-blue-700 
-              text-white font-bold py-2 px-4 rounded 
-              flex items-center gap-2 w-fit mx-auto"
-            >
-            Next page <span class="text-2xl">→</span> 
-          </a>
+          <h3>a. Initialisation du Plugin de Routage :</h3>
+          <div class="paragrpah">
+            <span class="part_of_code">L.Routing.control</span> : Cette ligne crée une instance du contrôle de routage fourni par le plugin Leaflet Routing Machine.
+            <br><br>
+            <span class="part_of_code">waypoints</span> : Cette option spécifie les points de passage pour la planification du trajet. Dans cet exemple, deux points de passage sont définis, représentant le point de départ (startLat, startLng) et le point d'arrivée (endLat, endLng).
+            <br><br>
+            <span class="part_of_code">routeWhileDragging</span> : Cette option permet la mise à jour dynamique du trajet pendant le déplacement des marqueurs de départ et d'arrivée. Si définie sur true, le trajet sera recalculé en temps réel lors du glissement des marqueurs.
+          </div>
+
+          <h3>b. Personnalisation du Plugin de Routage :</h3>
+          <div class="paragrpah">
+            Le plugin de routage peut être personnalisé pour inclure des options telles que le style de la ligne de route, le mode de transport, les options de planification du trajet et les événements de routage.
+          </div>
+          <div id="map5" class="map"></div>
+          <code id="exemple5" data-lang="javascript">
+// Ajouter la route entre les deux points
+let control = L.Routing.control({
+  waypoints: [
+      L.latLng(startLat, startLng),
+      L.latLng(endLat, endLng)
+  ],
+  routeWhileDragging: true, 
+  show: false,
+  lineOptions: {
+      styles: [
+        {color: 'red', opacity: 1, weight: 10},
+        {color: 'white', opacity: 1, weight: 5},
+      ]
+  },
+}).addTo(map5);
+
+// pour afficher la distance et la durée de la route
+let popup = L.popup({
+  closeButton: false,
+  closeOnClick: false,
+  autoClose: false,
+  className: 'popup'
+})
+
+function SerializeDistance(distance) {
+  if(distance > 1000) {
+      return (distance / 1000).toFixed(0) + " km";
+  }
+  return distance.toFixed(0) + " m";
+}
+function SerializeDuration(duration) {
+  if(duration > 3600) {
+      return (duration / 3600).toFixed(0) + " h";
+  }
+  return (duration / 60).toFixed(0) + " min";
+}
+control.on('routesfound', function(e) {
+  let routes = e.routes;
+  for(let route of routes) {
+      // add popup to the map above the middle of route
+      let middle = route.coordinates[Math.floor(route.coordinates.length / 2)];
+      popup.setLatLng(middle);
+      popup.setContent(`
+        <div class="popup-content">
+          <p>Distance: ${SerializeDistance(route.summary.totalDistance)}</p>
+          <p>Duration: ${SerializeDuration(route.summary.totalTime)} s</p>
+        </div>
+      `);
+      popup.openOn(map5);
+  }
+});
+
+// pour afficher un message d'erreur si la route n'est pas trouvée
+control.on('routingerror', function(e) {
+  console.error("Route not found.");
+});
+
+          </code>
+        </div>
+
+        <div class="mt-4">
+          <h2>3. Exemple Complet : (Implentation de la géolocalisation et du routage)</h2>
+          <p class="paragraph">
+            Voici un exemple complet de l'utilisation des plugins de géolocalisation et de routage dans une carte Leaflet. 
+            Dans cet exemple, on obtiendra les coordonnées de l'endroit où l'utilisateur a cliqué sur la carte. 
+            Ensuite, nous devrons afficher un itinéraire entre sa position et l'endroit sélectionné.
+          </p>
+          <div id="map6" class="map"></div>
+          <code id="exemple6" data-lang="javascript">
+// Définition d'un objet contenant les positions du périphérique et de la destination
+const obj = {
+  device_position: {
+      lat: null,
+      lng: null,
+  },
+  destination: {
+      lat: null,
+      lng: null,
+  }
+}
+
+// Génération d'une carte avec le plugin Leaflet et ajout d'un plugin de localisation
+let map6 = generate_map("map6", [34.02745, -6.83255]);
+L.control.locate({
+  position: 'topright',
+  drawCircle: false,
+  drawMarker: false,
+  showPopup: false,
+  setView: true,
+  keepCurrentZoomLevel: true,
+  locateOptions: {
+      maxZoom: 15,
+      enableHighAccuracy: true,
+      timeout: 1000,
+  }
+}).addTo(map6);
+
+// Écouteur d'événement lorsqu'une localisation est trouvée
+map6.on('locationfound', function(e) {
+  // Centrer la carte sur la position du périphérique
+  map6.setView([e.latitude, e.longitude], 15);
+
+  // Création d'une icône pour le marqueur du périphérique
+  let icon = L.icon({
+      iconUrl: '../assets/marker.png',
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50]
+  });
+
+  // Ajout du marqueur à la position du périphérique sur la carte
+  L.marker([e.latitude, e.longitude], {icon}).addTo(map6);
+  
+  // Mise à jour des coordonnées du périphérique dans l'objet
+  obj.device_position.lat = e.latitude;
+  obj.device_position.lng = e.longitude;
+
+  // Ajout d'un écouteur d'événement pour le clic sur la carte
+  map6.on('click', handleMapClick);
+})
+
+// Contrôle de l'itinéraire avec des options spécifiques
+let routeControl = L.Routing.control({
+  show: false,
+  lineOptions: {
+      styles: [
+        {color: 'red', opacity: 1, weight: 10},
+        {color: 'white', opacity: 1, weight: 5},
+      ]
+  },
+  createMarker: function(i, wp, nWps) {
+      return null
+  },
+})
+
+// Fonction pour mettre à jour l'itinéraire entre la position du périphérique et la destination
+const updateRoute = () => {
+  routeControl.setWaypoints([
+      L.latLng(obj.device_position.lat, obj.device_position.lng),
+      L.latLng(obj.destination.lat, obj.destination.lng)
+  ]);
+  routeControl.addTo(map6);
+}
+
+// Fonction appelée lorsqu'un clic est effectué sur la carte
+const handleMapClick = (e) => {
+  let lat = e.latlng.lat;
+  let lng = e.latlng.lng;
+
+  // Mise à jour des coordonnées de la destination dans l'objet
+  obj.destination.lat = lat;
+  obj.destination.lng = lng;
+
+  // Suppression du marqueur précédent
+  if(map6._markers) {
+      map6.removeLayer(map6._markers);
+  }
+
+  // Ajout du nouveau marqueur de destination
+  let icon = L.icon({
+      iconUrl: '../assets/destination-marker.png',
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50]
+  });
+  map6._markers = L.marker([lat, lng], {icon}).addTo(map6);
+
+  // Centrer la carte sur la nouvelle destination
+  map6.setView([lat, lng], 15);
+
+  // Mise à jour de l'itinéraire
+  updateRoute();
+}
+          </code>
         </div>
       </div>
     </div>
 
-    <script src="./scripts/page1/App.js"></script>
-    <script type="module" src="./scripts/page1/highlight_code.js"></script>
+    <script type="module" src="./scripts/App.js"></script>
+    <script type="module" src="./scripts/highlight_code.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { Highlighter } from "../../dependencies/highlighter/Highlighter.js";
+import { Highlighter } from "../dependencies/highlighter/Highlighter.js";
 
 
 // exemple 1
